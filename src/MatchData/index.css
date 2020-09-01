@@ -1,0 +1,110 @@
+.matchdata-team-dropdown {
+    height: 5%;
+}                    
+
+.matchdata-team-one-select {
+    border: 1px solid pink;
+    float: left;  
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.matchdata-team-two-select {
+    border: 1px solid pink;
+    float: right;  
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.team-logo-display {
+    height: 10%;
+}
+
+.matchdata-team-info {
+    height: 10%;
+}
+
+.matchdata-team-one-logo {
+    border: 1px solid pink;
+    float: left;  
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.matchdata-team-two-logo {
+    border: 1px solid pink;
+    float: right;  
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.match-data-team-logo {
+    height: 90%;
+}
+
+.matchdata-data-tables {
+    display: flex;
+    flex-grow: 1;
+    height: 85%;
+}
+
+.matchdata-first-table {
+    border: 1px solid pink;
+    float: left;  
+    width: 50%; 
+    height: 100%; 
+    display: flex;
+    justify-content: center;
+}
+
+.matchdata-second-table {
+    border: 1px solid pink;
+    float: right;  
+    width: 50%; 
+    height: 100%; 
+    display: flex;
+    justify-content: center;
+}
+
+/* Table */
+#title {
+    text-align: center;
+    font-family: arial, sans-serif;
+  }
+  
+  #games {
+    text-align: center;
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    border: 3px solid #ddd;
+    width: 100%;
+  }
+  
+  #games td, #games th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  #games tr:nth-child(even){background-color: #f2f2f2;}
+  
+  #games tr:hover {background-color: #ddd;}
+  
+  #games th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: #4CAF50;
+    color: white;
+  }
