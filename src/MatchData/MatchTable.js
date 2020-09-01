@@ -4,7 +4,7 @@ class MatchTable extends Component {
     constructor() {
         super();
         this.state = {
-            games: [],
+            games: [{}],
         };
     }
 
@@ -21,6 +21,7 @@ class MatchTable extends Component {
                 <h1 id='title'>Team Data</h1>
                 <table id='games'>
                     <tbody>
+                        {this.renderTableHeader()}  
                         {games.map(game =>
                             <tr>
                                 <td>{game.game_id}</td>
@@ -35,38 +36,13 @@ class MatchTable extends Component {
         )
     }
 
-    // renderTableHeader() {
-    //     let header = ['id', 'date', 'team one', 'team two']
-    //     return header.map((key, index) => {
-    //         return <th key={index}>{key.toUpperCase()}</th>
-    //     })
-    // }
-
-    // renderTableData() {
-    //     return this.state.games.map((game, index) => {
-    //         const { game_id, game_date, game_team_one, game_team_two } = game //destructuring
-    //         return (
-    //             <tr key={game_id}>
-    //                 {this.state.games.game_date}
-    //             </tr>
-    //         )
-    //     })
-    // }
-
-    // render() {
-    //     return (
-    //         <div>
-    //             <h1 id='title'>Team Data</h1>
-    //             <table id='games'>
-    //                 <tbody>
-    //                     <th> test </th>
-    //                     {/* <tr>{this.renderTableHeader()}</tr> */}
-    //                     {this.renderTableData()}
-    //                 </tbody>
-    //             </table>
-    //         </div>
-    //     )
-    // }
+    renderTableHeader() {
+        let header = Object.keys(this.state.games[0])
+        // let header = ['id', 'date', 'team one', 'team two']
+        return header.map((key, index) => {
+            return <th key={index}>{key.toUpperCase()}</th>
+        })
+    }
 }
 
 export default MatchTable

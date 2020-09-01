@@ -8,29 +8,32 @@ export class TeamLogoDisplay extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            urlLink: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/TSM_Logo.svg/1200px-TSM_Logo.svg.png'
+            urlLink: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/TSM_Logo.svg/1200px-TSM_Logo.svg.png',
+            displayTeam: 'TSM'
         };
     }
 
-    onChangeLogo(newLogoLink) {
+    onChangeTeams(newLogoLink, newTeamData) {
         this.setState({
-            urlLink: newLogoLink
+            urlLink: newLogoLink,
+            displayTeam: newTeamData
         });
     }
 
     render() {
         const { urlLink } = this.state;
+        const { displayTeam } = this.state;
         return (
             <div className='center-column'>
                 <div className='matchdata-team-dropdown'>
                     <div className='matchdata-team-one-select'>
                         <TeamSelectDropdown
-                            changeLogo={this.onChangeLogo.bind(this)}
+                            changeTeam={this.onChangeTeams.bind(this)}
                         />
                     </div>
                     <div className='matchdata-team-two-select'>
                         <TeamSelectDropdown
-                            changeLogo={this.onChangeLogo.bind(this)}
+                            changeTeam={this.onChangeTeams.bind(this)}
                         />
                     </div>
                 </div>
@@ -54,13 +57,17 @@ export class TeamLogoDisplay extends React.Component {
 
                 <div className='matchdata-data-tables'>
                     <div className='matchdata-first-table'>
-                        <MatchTable/>
+                        <MatchTable
+                            changeTeam={this.onChangeTeams.bind(this)}
+                        />
                     </div>
                     <div className='matchdata-second-table'>
-                        <MatchTable/>
+                        <MatchTable
+                            changeTeam={this.onChangeTeams.bind(this)}
+                        />
                     </div>
                 </div>
-
+                { this.state.displayTeam }
             </div>
         )
     }

@@ -20,41 +20,26 @@ export class TeamSelectDropdown extends React.Component {
       .then(data => this.setState({ teams: data }));
   }
 
-  changeTeamLogo(team) {
-    this.props.changeLogo(team);
+  changeTeams(team_logo, team_name) {
+    this.props.changeTeam(team_logo, team_name);
+     console.log("This was called")
   }
 
   render() {
     const { teams } = this.state;
     return (
-      // <div className='matchdata-team-dropdown'>
       <div>
-        {/* <div className='matchdata-team-one-select'> */}
           <Dropdown>
             <Dropdown.Toggle variant='success' id='dropdown-basic'>
-              Select Team 1
+              Select Team
               </Dropdown.Toggle>
 
             <Dropdown.Menu>
               {teams.map(team =>
-                <Dropdown.Item onClick={() => this.changeTeamLogo(team.team_logo)}>{team.team_name}</Dropdown.Item>
+                <Dropdown.Item onClick={() => this.changeTeams(team.team_logo, team.team_name)}>{team.team_name}</Dropdown.Item>
               )}
             </Dropdown.Menu>
-          </Dropdown>
-        {/* </div> */}
-
-        {/* <div className='matchdata-team-two-select'>
-          <Dropdown>
-            <Dropdown.Toggle variant='success' id='dropdown-basic'>
-              Select Team 2
-              </Dropdown.Toggle>
-            <Dropdown.Menu>
-              {teams.map(team =>
-                <Dropdown.Item href='#/action-2'>{team.team_name}</Dropdown.Item>
-              )}
-            </Dropdown.Menu>
-          </Dropdown>
-        </div> */}
+          </Dropdown>  
       </div>
     )
   }
