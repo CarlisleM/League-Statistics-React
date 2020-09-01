@@ -3,9 +3,6 @@ import React, { Component } from 'react'
 class MatchTable extends Component {
     constructor() {
         super();
-        this.state = {
-            games: [{}],
-        };
     }
 
     componentDidMount() {
@@ -15,19 +12,18 @@ class MatchTable extends Component {
     }
 
     render() {
-        const { games } = this.state;
         return (
             <div>
                 <h1 id='title'>Team Data</h1>
                 <table id='games'>
+                    {this.renderTableHeader()}  
                     <tbody>
-                        {this.renderTableHeader()}  
-                        {games.map(game =>
-                            <tr>
+                        {this.props.team.games.map(game =>
+                            <tr key={game.game_id}>
                                 <td>{game.game_id}</td>
                                 <td>{game.game_date}</td>
-                                <td>{game.game_team_one}</td>
-                                <td>{game.game_team_two}</td>
+                                <td>{game.teamOneId}</td>
+                                <td>{game.teamTwoId}</td>
                             </tr>
                         )}
                     </tbody>
@@ -37,10 +33,16 @@ class MatchTable extends Component {
     }
 
     renderTableHeader() {
-        let header = Object.keys(this.state.games[0])
-        return header.map((key, index) => {
-            return <th key={index}>{key.toUpperCase()}</th>
-        })
+      return (
+        <thead>
+          <tr>
+            <td>ID</td>
+            <td>Date</td>
+            <td>Team 1</td>
+            <td>Team 2</td>
+          </tr>
+        </thead>
+      )
     }
 }
 
