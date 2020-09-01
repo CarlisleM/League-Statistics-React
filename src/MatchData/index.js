@@ -1,7 +1,8 @@
-import {MatchData} from './MatchData.js'
+import MatchTable from './MatchTable.js'
 import {TeamSelectDropdown} from './TeamSelectDropdown.js'
 import {TeamLogoDisplay} from './TeamLogoDisplay.js'
+import './index.css';
 
-export {MatchData}
+export {MatchTable}
 export {TeamSelectDropdown}
 export {TeamLogoDisplay}

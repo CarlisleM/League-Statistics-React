@@ -1,8 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
 
-import DropdownButton from 'react-bootstrap/DropdownButton'
-import MenuItem from 'react-bootstrap-dropdown-menu';
 import Dropdown from 'react-bootstrap/Dropdown'
 
 import TeamLogoDisplay from './TeamLogoDisplay.js'
@@ -13,6 +11,7 @@ export class TeamSelectDropdown extends React.Component {
 
     this.state = {
       teams: [],
+      src: 'https://ggscore.com/media/logo/t4639.png'
     };
   }
 
@@ -23,16 +22,15 @@ export class TeamSelectDropdown extends React.Component {
   }
 
   changeTeamLogo(team) {
-    console.log('test')
-    // TeamLogoDisplay.setState({ url: 'https://ggscore.com/media/logo/t4639.png' })
+    this.props.changeLogo(this.state.src);
   }
 
   render() {
     const { teams } = this.state;
     return (
-      <div className='matchdata-team-dropdown'>
-
-        <div className='matchdata-team-one-select'>
+      // <div className='matchdata-team-dropdown'>
+      <div>
+        {/* <div className='matchdata-team-one-select'> */}
           <Dropdown>
             <Dropdown.Toggle variant='success' id='dropdown-basic'>
               Select Team 1
@@ -44,9 +42,9 @@ export class TeamSelectDropdown extends React.Component {
               )}
             </Dropdown.Menu>
           </Dropdown>
-        </div>
+        {/* </div> */}
 
-        <div className='matchdata-team-two-select'>
+        {/* <div className='matchdata-team-two-select'>
           <Dropdown>
             <Dropdown.Toggle variant='success' id='dropdown-basic'>
               Select Team 2
@@ -57,8 +55,7 @@ export class TeamSelectDropdown extends React.Component {
               )}
             </Dropdown.Menu>
           </Dropdown>
-        </div>
-
+        </div> */}
       </div>
     )
   }

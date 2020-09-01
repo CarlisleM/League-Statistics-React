@@ -1,3 +1,8 @@
+.center-column {
+    height: 100%;
+}
+
+/* Dropdown menus */
 .matchdata-team-dropdown {
     height: 5%;
 }                    
@@ -22,15 +27,16 @@
     align-items: center;
 }
 
+/* Logo div */
 .team-logo-display {
     height: 10%;
 }
 
-.matchdata-team-info {
-    height: 10%;
+.match-data-team-logo {
+    height: 90%;
 }
 
-.matchdata-team-one-logo {
+.matchdata-team-one-logo {    
     border: 1px solid pink;
     float: left;  
     width: 50%;
@@ -50,18 +56,15 @@
     align-items: center;
 }
 
-.match-data-team-logo {
-    height: 90%;
-}
-
+/* Data div */
 .matchdata-data-tables {
     display: flex;
     flex-grow: 1;
-    height: 85%;
+    width: 100%;
 }
 
 .matchdata-first-table {
-    border: 1px solid pink;
+    border: 1px solid red;
     float: left;  
     width: 50%; 
     height: 100%; 
@@ -70,7 +73,7 @@
 }
 
 .matchdata-second-table {
-    border: 1px solid pink;
+    border: 1px solid blue;
     float: right;  
     width: 50%; 
     height: 100%; 
