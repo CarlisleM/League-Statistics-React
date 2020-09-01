@@ -35,7 +35,7 @@ export class TeamSelectDropdown extends React.Component {
 
             <Dropdown.Menu>
               {teams.map(team =>
-                <Dropdown.Item onClick={() => this.changeTeams(team.team_logo, team.team_name)}>{team.team_name}</Dropdown.Item>
+                <Dropdown.Item key={team.team_id} onClick={() => this.changeTeams(team.team_logo, team.team_name)}>{team.team_name}</Dropdown.Item>
               )}
             </Dropdown.Menu>
           </Dropdown>  

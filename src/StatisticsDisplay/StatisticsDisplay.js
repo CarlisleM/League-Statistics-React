@@ -21,8 +21,7 @@ export class StatisticsDisplay extends React.Component {
     }
 
     render() {
-        const { urlLink } = this.state;
-        const { displayTeam } = this.state;
+        const { urlLink, displayTeam } = this.state;
         return (
             <div className='center-column'>
                 <div className='statisticsdisplay-team-dropdown'>
@@ -31,38 +30,23 @@ export class StatisticsDisplay extends React.Component {
                             changeTeam={this.onChangeTeams.bind(this)}
                         />
                     </div>
-                    <div className='statisticsdisplay-team-two-select'>
-                        <TeamSelectDropdown
-                            changeTeam={this.onChangeTeams.bind(this)}
-                        />
-                    </div>
                 </div>
 
                 <div className='team-logo-display' >
                     < div className='statisticsdisplay-team-one-logo' >
+                      {/*
                         <img
-                            // src={urls[0].image_link}
                             src={this.state.urlLink}
                             className='match-data-team-logo'
                         />
+                        */}
                     </div >
-                    <div className='statisticsdisplay-team-two-logo'>
-                        <img
-                            // src={urls[1].image_link}
-                            src={this.state.urlLink}
-                            className='match-data-team-logo'
-                        />
-                    </div>
                 </div>
 
                 <div className='statisticsdisplay-data-tables'>
                     <div className='statisticsdisplay-first-table'>
                         <MatchTable
-                            changeTeam={this.onChangeTeams.bind(this)}
-                        />
-                    </div>
-                    <div className='statisticsdisplay-second-table'>
-                        <MatchTable
+                            team={this.props.team}
                             changeTeam={this.onChangeTeams.bind(this)}
                         />
                     </div>

@@ -17,6 +17,7 @@ export class LeagueBar extends React.Component {
                 let leagues = data.map((league) => {
                     return (
                         <div
+                          key={league.league_id}
                             className='leaguebar-parent'
                         >
                             <div
