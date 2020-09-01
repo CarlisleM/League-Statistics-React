@@ -10,8 +10,7 @@ export class TeamSelectDropdown extends React.Component {
     super(props);
 
     this.state = {
-      teams: [],
-      src: 'https://ggscore.com/media/logo/t4639.png'
+      teams: []
     };
   }
 
@@ -22,7 +21,7 @@ export class TeamSelectDropdown extends React.Component {
   }
 
   changeTeamLogo(team) {
-    this.props.changeLogo(this.state.src);
+    this.props.changeLogo(team);
   }
 
   render() {
@@ -38,7 +37,7 @@ export class TeamSelectDropdown extends React.Component {
 
             <Dropdown.Menu>
               {teams.map(team =>
-                <Dropdown.Item onClick={() => this.changeTeamLogo(team.team_name)}>{team.team_name}</Dropdown.Item>
+                <Dropdown.Item onClick={() => this.changeTeamLogo(team.team_logo)}>{team.team_name}</Dropdown.Item>
               )}
             </Dropdown.Menu>
           </Dropdown>
