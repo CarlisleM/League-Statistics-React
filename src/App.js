@@ -2,7 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { LeagueBar } from './LeagueBar';
-import { MatchTable, TeamSelectDropdown, TeamLogoDisplay } from './MatchData';
+import { MatchTable, TeamSelectDropdown, StatisticsDisplay } from './StatisticsDisplay';
 import { ScheduleBar } from './ScheduleBar'
 import { LocalTimeDisplay } from './LocalTimeDisplay';
 
@@ -61,10 +61,10 @@ class App extends React.Component {
         </div>
 
         <div className="app-main">
-          <div className="matchdata-body">
+          <div className="statisticsdisplay-body">
             {/* <TeamSelectDropdown/> */}
-            <TeamLogoDisplay/>
-            {/* <MatchData/> */}
+            <StatisticsDisplay/>
+            {/* <StatisticsDisplay/> */}
           </div>
         </div>
 

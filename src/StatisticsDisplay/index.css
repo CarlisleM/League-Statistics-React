@@ -3,11 +3,11 @@
 }
 
 /* Dropdown menus */
-.matchdata-team-dropdown {
+.statisticsdisplay-team-dropdown {
     height: 5%;
 }                    
 
-.matchdata-team-one-select {
+.statisticsdisplay-team-one-select {
     border: 1px solid pink;
     float: left;  
     width: 50%;
@@ -17,7 +17,7 @@
     align-items: center;
 }
 
-.matchdata-team-two-select {
+.statisticsdisplay-team-two-select {
     border: 1px solid pink;
     float: right;  
     width: 50%;
@@ -36,7 +36,7 @@
     height: 90%;
 }
 
-.matchdata-team-one-logo {    
+.statisticsdisplay-team-one-logo {    
     border: 1px solid pink;
     float: left;  
     width: 50%;
@@ -46,7 +46,7 @@
     align-items: center;
 }
 
-.matchdata-team-two-logo {
+.statisticsdisplay-team-two-logo {
     border: 1px solid pink;
     float: right;  
     width: 50%;
@@ -57,13 +57,13 @@
 }
 
 /* Data div */
-.matchdata-data-tables {
+.statisticsdisplay-data-tables {
     display: flex;
     flex-grow: 1;
     width: 100%;
 }
 
-.matchdata-first-table {
+.statisticsdisplay-first-table {
     border: 1px solid red;
     float: left;  
     width: 50%; 
@@ -73,7 +73,7 @@
     align-items: center;
 }
 
-.matchdata-second-table {
+.statisticsdisplay-second-table {
     border: 1px solid blue;
     float: right;  
     width: 50%; 

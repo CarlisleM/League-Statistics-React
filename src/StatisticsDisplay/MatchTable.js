@@ -38,7 +38,6 @@ class MatchTable extends Component {
 
     renderTableHeader() {
         let header = Object.keys(this.state.games[0])
-        // let header = ['id', 'date', 'team one', 'team two']
         return header.map((key, index) => {
             return <th key={index}>{key.toUpperCase()}</th>
         })

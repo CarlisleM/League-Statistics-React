@@ -3,7 +3,7 @@ import { render } from 'react-dom';
 import TeamSelectDropdown from './TeamSelectDropdown.js'
 import MatchTable from './MatchTable';
 
-export class TeamLogoDisplay extends React.Component {
+export class StatisticsDisplay extends React.Component {
 
     constructor(props) {
         super(props);
@@ -25,13 +25,13 @@ export class TeamLogoDisplay extends React.Component {
         const { displayTeam } = this.state;
         return (
             <div className='center-column'>
-                <div className='matchdata-team-dropdown'>
-                    <div className='matchdata-team-one-select'>
+                <div className='statisticsdisplay-team-dropdown'>
+                    <div className='statisticsdisplay-team-one-select'>
                         <TeamSelectDropdown
                             changeTeam={this.onChangeTeams.bind(this)}
                         />
                     </div>
-                    <div className='matchdata-team-two-select'>
+                    <div className='statisticsdisplay-team-two-select'>
                         <TeamSelectDropdown
                             changeTeam={this.onChangeTeams.bind(this)}
                         />
@@ -39,14 +39,14 @@ export class TeamLogoDisplay extends React.Component {
                 </div>
 
                 <div className='team-logo-display' >
-                    < div className='matchdata-team-one-logo' >
+                    < div className='statisticsdisplay-team-one-logo' >
                         <img
                             // src={urls[0].image_link}
                             src={this.state.urlLink}
                             className='match-data-team-logo'
                         />
                     </div >
-                    <div className='matchdata-team-two-logo'>
+                    <div className='statisticsdisplay-team-two-logo'>
                         <img
                             // src={urls[1].image_link}
                             src={this.state.urlLink}
@@ -55,22 +55,22 @@ export class TeamLogoDisplay extends React.Component {
                     </div>
                 </div>
 
-                <div className='matchdata-data-tables'>
-                    <div className='matchdata-first-table'>
+                <div className='statisticsdisplay-data-tables'>
+                    <div className='statisticsdisplay-first-table'>
                         <MatchTable
                             changeTeam={this.onChangeTeams.bind(this)}
                         />
                     </div>
-                    <div className='matchdata-second-table'>
+                    <div className='statisticsdisplay-second-table'>
                         <MatchTable
                             changeTeam={this.onChangeTeams.bind(this)}
                         />
                     </div>
                 </div>
-                { this.state.displayTeam }
+                {this.state.displayTeam}
             </div>
         )
     }
 }
 
-export default TeamLogoDisplay;
+export default StatisticsDisplay;

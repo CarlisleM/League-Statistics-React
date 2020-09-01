@@ -2,8 +2,7 @@ import React from 'react';
 import { render } from 'react-dom';
 
 import Dropdown from 'react-bootstrap/Dropdown'
-
-import TeamLogoDisplay from './TeamLogoDisplay.js'
+import StatisticsDisplay from './StatisticsDisplay.js'
 
 export class TeamSelectDropdown extends React.Component {
   constructor(props) {
