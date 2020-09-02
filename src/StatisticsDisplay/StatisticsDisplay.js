@@ -26,6 +26,7 @@ export class StatisticsDisplay extends React.Component {
             <div className='test'>
                 <div className='statisticsdisplay-team-dropdown'>
                     <TeamSelectDropdown
+                        teams={this.props.teams}
                         changeTeam={this.onChangeTeams.bind(this)}
                     />
                 </div>

@@ -10,6 +10,12 @@
     border: 1px solid blue;
 }
 
+.leaguebar:hover {
+    background: silver;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
 .leaguebar-league-logo {
     height: 100%;
 }

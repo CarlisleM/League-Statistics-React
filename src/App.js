@@ -59,6 +59,7 @@ class App extends React.Component {
   constructor() {
     super()
     this.state = {
+      selectedLeagueId: 1,
       teamOne: teamOne,
       teamTwo: teamTwo,
       teams: [],
@@ -67,19 +68,40 @@ class App extends React.Component {
     }
   }
 
+  componentDidMount() {
+    fetch('http://localhost:5000/api/teams')
+      .then(response => response.json())
+      .then(data => this.setState({ teams: data }));
+    // console.log(team.filter(team => team.league_id == 1))
+  }
+
+  get filteredTeams() {
+    console.log(this.state.teams)
+    console.log(this.state.teams.filter(team => team.league_id == this.state.league_id))
+    return this.state.teams.filter(team => team.league_id == this.state.selectedLeagueId)    
+  }
+
+  changeLeague(leagueId) {
+    // this.props.changeLeague(league_id);
+    this.setState({selectedLeagueId: leagueId})
+    console.log(leagueId)
+  }
+
   render() {
-    return (
+    return (      
       <div className="App">
         <div className="app-leagues">
-          <LeagueBar />
+          <LeagueBar changeLeague={this.changeLeague.bind(this)} selectedLeagueId={this.state.selectedLeagueId}/>
+          {/* {this.state.selectedLeagueId}
+          {this.filteredTeams.map(x => <div>{x.team_name}</div>)} */}
         </div>
 
         <div className="app-main">
           <div className="statisticsdisplay-body-left">
-            <StatisticsDisplay team={teamOne} />
+            <StatisticsDisplay teams={this.filteredTeams} team={teamOne} />
           </div>
           <div className="statisticsdisplay-body-right">
-            <StatisticsDisplay team={teamTwo} />
+            <StatisticsDisplay teams={this.filteredTeams} team={teamTwo} />
           </div>
         </div>
 
