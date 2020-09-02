@@ -33,16 +33,20 @@ class MatchTable extends Component {
     }
 
     renderTableHeader() {
-      return (
-        <thead>
-          <tr>
-            <td>ID</td>
-            <td>Date</td>
-            <td>Team 1</td>
-            <td>Team 2</td>
-          </tr>
-        </thead>
-      )
+        let header = Object.keys(this.props.team.games[0])
+        return header.map((key, index) => {
+            return <th key={index}>{key.toUpperCase()}</th>
+        })
+    //   return (  
+    //     <thead>
+    //       <tr>
+    //         <td>ID</td>
+    //         <td>Date</td>
+    //         <td>Team 1</td>
+    //         <td>Team 2</td>
+    //       </tr>
+    //     </thead>
+    //   )
     }
 }
 

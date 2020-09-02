@@ -14,10 +14,10 @@ const teamOne = {
   sname: 'Team SoloMid',
   image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/TSM_Logo.svg/1200px-TSM_Logo.svg.png',
   games: [
-    {  game_id: 1, game_date: new Date().toString(), teamOneId: 1, teamTwoId: 2 },
-    {  game_id: 2, game_date: new Date().toString(), teamOneId: 1, teamTwoId: 2 },
-    {  game_id: 3, game_date: new Date().toString(), teamOneId: 1, teamTwoId: 2 },
-    {  game_id: 4, game_date: new Date().toString(), teamOneId: 1, teamTwoId: 2 },
+    { game_id: 1, game_date: new Date().toString(), teamOneId: 1, teamTwoId: 2 },
+    { game_id: 2, game_date: new Date().toString(), teamOneId: 1, teamTwoId: 2 },
+    { game_id: 3, game_date: new Date().toString(), teamOneId: 1, teamTwoId: 2 },
+    { game_id: 4, game_date: new Date().toString(), teamOneId: 1, teamTwoId: 2 }
   ]
 }
 
@@ -26,7 +26,12 @@ const teamTwo = {
   name: 'c9',
   sname: 'Cloud9',
   image: 'https://ggscore.com/media/logo/t4639.png',
-  games: []
+  games: [
+    { game_id: 1, game_date: new Date().toString(), teamOneId: 1, teamTwoId: 2 },
+    { game_id: 2, game_date: new Date().toString(), teamOneId: 1, teamTwoId: 2 },
+    { game_id: 3, game_date: new Date().toString(), teamOneId: 1, teamTwoId: 2 },
+    { game_id: 4, game_date: new Date().toString(), teamOneId: 1, teamTwoId: 2 }
+  ]
 }
 
 const games = [
@@ -66,18 +71,20 @@ class App extends React.Component {
     return (
       <div className="App">
         <div className="app-leagues">
-          <LeagueBar/>
+          <LeagueBar />
         </div>
 
         <div className="app-main">
-          <div className="statisticsdisplay-body">
+          <div className="statisticsdisplay-body-left">
             <StatisticsDisplay team={teamOne} />
+          </div>
+          <div className="statisticsdisplay-body-right">
             <StatisticsDisplay team={teamTwo} />
           </div>
         </div>
 
         <div className="app-schedulebar">
-          <LocalTimeDisplay/>
+          <LocalTimeDisplay />
           <ScheduleBar
             games={games}
           />

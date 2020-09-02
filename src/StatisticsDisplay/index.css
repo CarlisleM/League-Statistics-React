@@ -1,87 +1,49 @@
-.center-column {
-    height: 100%;
+.test {
+    height: 100vh;
 }
 
 /* Dropdown menus */
 .statisticsdisplay-team-dropdown {
+    border: 1px solid green;
     height: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }                    
 
-.statisticsdisplay-team-one-select {
-    border: 1px solid pink;
-    float: left;  
-    width: 50%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.statisticsdisplay-team-two-select {
-    border: 1px solid pink;
-    float: right;  
-    width: 50%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 /* Logo div */
-.team-logo-display {
+.team-logo {
+    border: 1px solid purple;
     height: 10%;
-}
-
-.match-data-team-logo {
-    height: 90%;
-}
-
-.statisticsdisplay-team-one-logo {    
-    border: 1px solid pink;
-    float: left;  
-    width: 50%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.statisticsdisplay-team-two-logo {
-    border: 1px solid pink;
-    float: right;  
-    width: 50%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* Data div */
-.statisticsdisplay-data-tables {
-    display: flex;
-    flex-grow: 1;
     width: 100%;
 }
 
-.statisticsdisplay-first-table {
-    border: 1px solid red;
-    float: left;  
-    width: 50%; 
-    height: 100%; 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+/* Actual logo size within the div */
+.statisticsdisplay-team-logo {
+    height: 100%;
+    padding-left: 44%;
 }
 
-.statisticsdisplay-second-table {
-    border: 1px solid blue;
-    float: right;  
-    width: 50%; 
-    height: 100%; 
-    display: flex;
+/* Data div */
+.statisticsdisplay-data {
+    border: 1px solid red;
+    width: 100%;
+
+    /* display: flex;
+    flex-grow: 1;
     justify-content: center;
-    align-items: center;
+    align-items: center; */
 }
+
+.statisticsdisplay-table {
+    width: 95%;
+    display: flex;
+    padding-left: 5%;
+    /* justify-content: center;
+    align-items: center; */
+}
+
+
 
 /* Table */
 #title {
