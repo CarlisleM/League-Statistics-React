@@ -8,14 +8,14 @@ export class StatisticsDisplay extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            urlLink: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/TSM_Logo.svg/1200px-TSM_Logo.svg.png',
+            teamLogo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/TSM_Logo.svg/1200px-TSM_Logo.svg.png',
             displayTeam: 'TSM'
         };
     }
 
     onChangeTeams(newLogoLink, newTeamData) {
         this.setState({
-            urlLink: newLogoLink,
+            teamLogo: newLogoLink,
             displayTeam: newTeamData
         });
     }
@@ -33,7 +33,8 @@ export class StatisticsDisplay extends React.Component {
 
                 <div className='team-logo'>
                     <img
-                        src={this.state.urlLink}
+                        src={this.props.teamLogo}
+                        // src={this.state.urlLink}
                         className='statisticsdisplay-team-logo'
                     />                   
                 </div>
@@ -46,7 +47,6 @@ export class StatisticsDisplay extends React.Component {
                         />
                     </div>
                 </div>
-                {this.state.displayTeam}
             </div>
         )
     }

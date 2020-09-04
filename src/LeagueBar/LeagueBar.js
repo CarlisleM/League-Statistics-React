@@ -8,7 +8,7 @@ export class LeagueBar extends React.Component {
         this.state = {
             leagues: [],
         };
-        console.log(props)
+        // console.log(props)
     }
 
     componentDidMount() {
@@ -38,9 +38,6 @@ export class LeagueBar extends React.Component {
                                     <img
                                         src={league.league_logo}
                                         className='leaguebar-league-logo'
-                                        
-                                    // onClick={() => this.changeLeagues(league.league_id)}
-                                    // onClick={() => this.changeTeams(team.team_logo, team.team_name)}
                                     />
                                 </div>
                             </div>
@@ -49,7 +46,6 @@ export class LeagueBar extends React.Component {
                     }
                 </div>
             </div>
-
         )
     }
 }

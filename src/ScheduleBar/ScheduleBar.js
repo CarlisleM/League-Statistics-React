@@ -25,12 +25,13 @@ export class ScheduleBar extends React.Component {
                         <div
                             className='schedulebar-game'
                             key={game.id}
+                            onClick={() => this.props.changeMatch(game.game_id)}
                         >
                             <img
                                 className='schedulebar-team-logo'
-                                src={game.teamOne.image}
+                                src={this.props.teams.filter(team => team.team_id == game.game_team_one)[0].team_logo}
                             />
-
+                            
                             <div className='schedulebar-date-time'>
                                 <div>
                                     {this.displayDate(game.dateTime)}
@@ -42,7 +43,7 @@ export class ScheduleBar extends React.Component {
 
                             <img
                                 className='schedulebar-team-logo'
-                                src={game.teamTwo.image}
+                                src={this.props.teams.filter(team => team.team_id == game.game_team_two)[0].team_logo}
                             />
                         </div>
                     )

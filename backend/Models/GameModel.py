@@ -1,7 +1,8 @@
-from peewee import PostgresqlDatabase, PrimaryKeyField, TextField, Model
+from peewee import PostgresqlDatabase, PrimaryKeyField, TextField, IntegerField, Model
 from .BaseModel import BaseModel
 
 class Game(BaseModel):
+    league_id = IntegerField()
     id = PrimaryKeyField()
     date = TextField() # Date format
     team_one_id = TextField()
@@ -9,6 +10,7 @@ class Game(BaseModel):
 
     def to_json(self):
         return {
+            'league_id': self.league_id,
             'game_id': self.id,
             'game_date': self.date,
             'game_team_one': self.team_one_id,

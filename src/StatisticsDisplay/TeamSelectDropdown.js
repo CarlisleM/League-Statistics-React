@@ -5,11 +5,6 @@ import Dropdown from 'react-bootstrap/Dropdown'
 import StatisticsDisplay from './StatisticsDisplay.js'
 import { LeagueBar } from '../LeagueBar/index.js';
 
-// Gets the team_id when clicked on dropdown
-const select = (e) => {
-  console.log(e);
-}
-
 export class TeamSelectDropdown extends React.Component {
   onChangeLeagues(id) {
     this.setState({
@@ -24,7 +19,7 @@ export class TeamSelectDropdown extends React.Component {
   render() {
     return (
       <div>
-        <Dropdown onSelect={select}>
+        <Dropdown>
           <Dropdown.Toggle variant='success' id='dropdown-basic'>
             Select Team
           </Dropdown.Toggle>

@@ -34,32 +34,13 @@ const teamTwo = {
   ]
 }
 
-const games = [
-  {
-    id: 1,
-    teamOne,
-    teamTwo,
-    dateTime: '2020-08-28T05:48:15.704Z'
-  },
-  {
-    id: 2,
-    teamOne,
-    teamTwo,
-    dateTime: '2020-08-28T05:48:15.704Z'
-  },
-  {
-    id: 3,
-    teamOne,
-    teamTwo,
-    dateTime: '2020-08-28T05:48:15.704Z'
-  }
-];
-
 class App extends React.Component {
   constructor() {
     super()
     this.state = {
       selectedLeagueId: 1,
+      teammOne: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/TSM_Logo.svg/1200px-TSM_Logo.svg.png',
+      teammTwo: 'https://ggscore.com/media/logo/t4639.png',
       teamOne: teamOne,
       teamTwo: teamTwo,
       teams: [],
@@ -69,46 +50,95 @@ class App extends React.Component {
   }
 
   componentDidMount() {
+    fetch('http://localhost:5000/api/leagues')
+      .then(response => response.json())
+      .then(data => this.setState({ leagues: data }));
+
     fetch('http://localhost:5000/api/teams')
       .then(response => response.json())
       .then(data => this.setState({ teams: data }));
-    // console.log(team.filter(team => team.league_id == 1))
+
+    fetch('http://localhost:5000/api/games')
+      .then(response => response.json())
+      .then(data => this.setState({ games: data }));
   }
 
   get filteredTeams() {
-    console.log(this.state.teams)
-    console.log(this.state.teams.filter(team => team.league_id == this.state.league_id))
     return this.state.teams.filter(team => team.league_id == this.state.selectedLeagueId)    
   }
 
+  get upcomingGames() {
+    return this.state.games.filter(game => game.league_id == this.state.selectedLeagueId)    
+  }
+
+  get specifiedGame() {
+    return this.state.games.filter(game => game.game_id == this.state.selectedGameId)[0]
+  }
+
   changeLeague(leagueId) {
-    // this.props.changeLeague(league_id);
-    this.setState({selectedLeagueId: leagueId})
-    console.log(leagueId)
+    this.setState({
+      selectedLeagueId: leagueId,
+      teammOne: '',
+      teammTwo: '',
+      teamOne: '',
+      teamTwo: ''
+    })
+    // Here we got the league_id
+  }
+
+  changeMatch(gameId) {
+    // console.log(this.specifiedGame)
+    const matchGame = this.state.games.filter(game => game.game_id == gameId)[0]
+    const teamOneName = this.state.teams.filter(team => team.team_id == matchGame.game_team_one)[0].team_logo
+    const teamTwoName = this.state.teams.filter(team => team.team_id == matchGame.game_team_two)[0].team_logo
+    
+    this.setState({
+      selectedGameId: gameId,
+      teammOne: teamOneName,
+      teammTwo: teamTwoName
+    })
   }
 
   render() {
-    return (      
+    return (
       <div className="App">
         <div className="app-leagues">
-          <LeagueBar changeLeague={this.changeLeague.bind(this)} selectedLeagueId={this.state.selectedLeagueId}/>
-          {/* {this.state.selectedLeagueId}
-          {this.filteredTeams.map(x => <div>{x.team_name}</div>)} */}
+          <LeagueBar 
+            changeLeague={this.changeLeague.bind(this)} 
+            selectedLeagueId={this.state.selectedLeagueId}
+          />
         </div>
 
         <div className="app-main">
           <div className="statisticsdisplay-body-left">
-            <StatisticsDisplay teams={this.filteredTeams} team={teamOne} />
+            <StatisticsDisplay 
+              teams={this.filteredTeams}
+              team={teamOne}
+              games={this.state.games}
+              teamLogo={this.state.teammOne}
+              selectedGameId={this.state.selectedGameId}
+            />
           </div>
           <div className="statisticsdisplay-body-right">
-            <StatisticsDisplay teams={this.filteredTeams} team={teamTwo} />
+            <StatisticsDisplay 
+              teams={this.filteredTeams} 
+              team={teamTwo} 
+              games={this.state.games}
+              teamLogo={this.state.teammTwo}
+              selectedGameId={this.state.selectedGameId}  
+            />
           </div>
         </div>
 
         <div className="app-schedulebar">
           <LocalTimeDisplay />
           <ScheduleBar
-            games={games}
+            teams={this.state.teams}
+            games={this.upcomingGames}
+            // match={this.specifiedGame}
+            selectedLeagueId={this.state.selectedLeagueId}
+            // selectedGameId={this.state.selectedGameId}
+            changeMatch={this.changeMatch.bind(this)} selectedGameId={this.state.selectedGameId}
           />
         </div>
       </div>
