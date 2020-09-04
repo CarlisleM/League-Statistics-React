@@ -4,15 +4,7 @@ import TeamSelectDropdown from './TeamSelectDropdown.js'
 import MatchTable from './MatchTable';
 
 export class StatisticsDisplay extends React.Component {
-
-    constructor(props) {
-        super(props);
-        this.state = {
-            teamLogo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/TSM_Logo.svg/1200px-TSM_Logo.svg.png',
-            displayTeam: 'TSM'
-        };
-    }
-
+    
     onChangeTeams(newLogoLink, newTeamData) {
         this.setState({
             teamLogo: newLogoLink,

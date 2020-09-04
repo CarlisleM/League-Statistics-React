@@ -6,43 +6,16 @@ import { MatchTable, TeamSelectDropdown, StatisticsDisplay } from './StatisticsD
 import { ScheduleBar } from './ScheduleBar'
 import { LocalTimeDisplay } from './LocalTimeDisplay';
 
-import { Button } from 'react-bootstrap';
-
-const teamOne = {
-  id: 1,
-  name: 'tsm',
-  sname: 'Team SoloMid',
-  image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/TSM_Logo.svg/1200px-TSM_Logo.svg.png',
-  games: [
-    { game_id: 1, game_date: new Date().toString(), teamOneId: 1, teamTwoId: 2 },
-    { game_id: 2, game_date: new Date().toString(), teamOneId: 1, teamTwoId: 2 },
-    { game_id: 3, game_date: new Date().toString(), teamOneId: 1, teamTwoId: 2 },
-    { game_id: 4, game_date: new Date().toString(), teamOneId: 1, teamTwoId: 2 }
-  ]
-}
-
-const teamTwo = {
-  id: 1,
-  name: 'c9',
-  sname: 'Cloud9',
-  image: 'https://ggscore.com/media/logo/t4639.png',
-  games: [
-    { game_id: 1, game_date: new Date().toString(), teamOneId: 1, teamTwoId: 2 },
-    { game_id: 2, game_date: new Date().toString(), teamOneId: 1, teamTwoId: 2 },
-    { game_id: 3, game_date: new Date().toString(), teamOneId: 1, teamTwoId: 2 },
-    { game_id: 4, game_date: new Date().toString(), teamOneId: 1, teamTwoId: 2 }
-  ]
-}
-
 class App extends React.Component {
   constructor() {
     super()
+
     this.state = {
       selectedLeagueId: 1,
-      teammOne: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/TSM_Logo.svg/1200px-TSM_Logo.svg.png',
-      teammTwo: 'https://ggscore.com/media/logo/t4639.png',
-      teamOne: teamOne,
-      teamTwo: teamTwo,
+      teamOneLogo: '',
+      teamTwoLogo: '',
+      teamOneData: [],
+      teamTwoData: [],
       teams: [],
       games: [],
       leagues: []
@@ -60,11 +33,11 @@ class App extends React.Component {
 
     fetch('http://localhost:5000/api/games')
       .then(response => response.json())
-      .then(data => this.setState({ games: data }));
+      .then(data => this.setState({ games: data }));  
   }
 
   get filteredTeams() {
-    return this.state.teams.filter(team => team.league_id == this.state.selectedLeagueId)    
+    return this.state.teams.filter(team => team.league_id == this.state.selectedLeagueId)
   }
 
   get upcomingGames() {
@@ -75,27 +48,68 @@ class App extends React.Component {
     return this.state.games.filter(game => game.game_id == this.state.selectedGameId)[0]
   }
 
-  changeLeague(leagueId) {
+  onChangeTeams(teamId, newLogoLink, newTeamData) {
+    const teamOneMatch = this.state.games.filter(game => (game.game_team_one == teamId) || (game.game_team_two == teamId))
+
     this.setState({
-      selectedLeagueId: leagueId,
-      teammOne: '',
-      teammTwo: '',
-      teamOne: '',
-      teamTwo: ''
-    })
-    // Here we got the league_id
+        teamOneLogo: newLogoLink,
+        displayTeam: newTeamData,
+        teamOneData: teamOneMatch
+    });
   }
 
-  changeMatch(gameId) {
-    // console.log(this.specifiedGame)
+  onChangeTeams2(teamId, newLogoLink, newTeamData) {
+    const teamTwoMatch = this.state.games.filter(game => (game.game_team_one == teamId) || (game.game_team_two == teamId))
+
+    this.setState({
+        teamTwoLogo: newLogoLink,
+        displayTeam: newTeamData,
+        teamTwoData: teamTwoMatch
+    });
+  }
+
+  changeLeague(leagueId) {
+
+    const gameId = this.state.games.filter(game => game.league_id == leagueId)[0].game_id
+
     const matchGame = this.state.games.filter(game => game.game_id == gameId)[0]
     const teamOneName = this.state.teams.filter(team => team.team_id == matchGame.game_team_one)[0].team_logo
     const teamTwoName = this.state.teams.filter(team => team.team_id == matchGame.game_team_two)[0].team_logo
+
+    const teamOneId = matchGame.game_team_one
+    const teamTwoId = matchGame.game_team_two
+
+    const teamOneMatch = this.state.games.filter(game => (game.game_team_one == teamOneId) || (game.game_team_two == teamOneId))
+    const teamTwoMatch = this.state.games.filter(game => (game.game_team_one == teamTwoId) || (game.game_team_two == teamTwoId))
+
+    this.setState({
+      selectedLeagueId: leagueId,
+      teamOne: '',
+      teamTwo: '',
+      teamOneLogo: teamOneName,
+      teamTwoLogo: teamTwoName,
+      teamOneData: teamOneMatch,
+      teamTwoData: teamTwoMatch
+    })
+  }
+
+  changeMatch(gameId) {
+    const matchGame = this.state.games.filter(game => game.game_id == gameId)[0]
+    const teamOneName = this.state.teams.filter(team => team.team_id == matchGame.game_team_one)[0].team_logo
+    const teamTwoName = this.state.teams.filter(team => team.team_id == matchGame.game_team_two)[0].team_logo
+
+    const teamOneId = matchGame.game_team_one
+    const teamTwoId = matchGame.game_team_two
+
+    const teamOneMatch = this.state.games.filter(game => (game.game_team_one == teamOneId) || (game.game_team_two == teamOneId))
+    const teamTwoMatch = this.state.games.filter(game => (game.game_team_one == teamTwoId) || (game.game_team_two == teamTwoId))
     
     this.setState({
       selectedGameId: gameId,
-      teammOne: teamOneName,
-      teammTwo: teamTwoName
+      teamOneLogo: teamOneName,
+      teamTwoLogo: teamTwoName,
+      teamOneData: teamOneMatch,
+      teamTwoData: teamTwoMatch
     })
   }
 
@@ -111,22 +125,51 @@ class App extends React.Component {
 
         <div className="app-main">
           <div className="statisticsdisplay-body-left">
-            <StatisticsDisplay 
-              teams={this.filteredTeams}
-              team={teamOne}
-              games={this.state.games}
-              teamLogo={this.state.teammOne}
-              selectedGameId={this.state.selectedGameId}
-            />
+            <div className='statisticsdisplay-team-dropdown'>
+                <TeamSelectDropdown
+                    teams={this.filteredTeams}
+                    // team={teamOne}
+                    changeTeam={this.onChangeTeams.bind(this)}
+                />
+            </div>
+
+            <div className='team-logo'>
+                <img
+                    src={this.state.teamOneLogo}
+                    className='statisticsdisplay-team-logo'
+                />                   
+            </div>
+
+            <div className='statisticsdisplay-table'>
+                <MatchTable
+                    games={this.state.teamOneData}
+                    // team={teamOne}
+                    changeTeam={this.onChangeTeams.bind(this)}
+                />
+            </div>
           </div>
+
           <div className="statisticsdisplay-body-right">
-            <StatisticsDisplay 
-              teams={this.filteredTeams} 
-              team={teamTwo} 
-              games={this.state.games}
-              teamLogo={this.state.teammTwo}
-              selectedGameId={this.state.selectedGameId}  
-            />
+            <div className='statisticsdisplay-team-dropdown'>
+                <TeamSelectDropdown
+                    teams={this.filteredTeams}
+                    changeTeam={this.onChangeTeams2.bind(this)}
+                />
+            </div>
+
+            <div className='team-logo'>
+                <img
+                    src={this.state.teamTwoLogo}
+                    className='statisticsdisplay-team-logo'
+                />                   
+            </div>
+
+            <div className='statisticsdisplay-table'>
+                <MatchTable
+                    games={this.state.teamTwoData}
+                    changeTeam={this.onChangeTeams.bind(this)}
+                />
+            </div>
           </div>
         </div>
 
@@ -135,9 +178,7 @@ class App extends React.Component {
           <ScheduleBar
             teams={this.state.teams}
             games={this.upcomingGames}
-            // match={this.specifiedGame}
             selectedLeagueId={this.state.selectedLeagueId}
-            // selectedGameId={this.state.selectedGameId}
             changeMatch={this.changeMatch.bind(this)} selectedGameId={this.state.selectedGameId}
           />
         </div>

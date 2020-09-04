@@ -4,10 +4,11 @@
 
 .leaguebar {
     display: flex;
+    height: 60px;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
     justify-content: center;
     align-items: center;
-    height: 60px;
-    border: 1px solid blue;
 }
 
 .leaguebar:hover {

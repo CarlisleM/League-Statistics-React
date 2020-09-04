@@ -34,7 +34,6 @@ export class LeagueBar extends React.Component {
                                     key={league.id}
                                     className='leaguebar'
                                 >
-                                    {league.league_name}
                                     <img
                                         src={league.league_logo}
                                         className='leaguebar-league-logo'

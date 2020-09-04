@@ -1,11 +1,6 @@
-.test {
-    height: 100vh;
-}
-
 /* Dropdown menus */
 .statisticsdisplay-team-dropdown {
-    border: 1px solid green;
-    height: 5%;
+    height: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -13,34 +8,30 @@
 
 /* Logo div */
 .team-logo {
-    border: 1px solid purple;
-    height: 10%;
+    height: 100px;
     width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* Actual logo size within the div */
 .statisticsdisplay-team-logo {
     height: 100%;
-    padding-left: 44%;
 }
 
 /* Data div */
 .statisticsdisplay-data {
-    border: 1px solid red;
     width: 100%;
-
-    /* display: flex;
-    flex-grow: 1;
-    justify-content: center;
-    align-items: center; */
 }
 
 .statisticsdisplay-table {
     width: 95%;
+    margin-top: 10px;
     display: flex;
-    padding-left: 5%;
-    /* justify-content: center;
-    align-items: center; */
+    padding-left: 5%; /* Test this */
+    justify-content: center;
+    align-items: center;
 }
 
 

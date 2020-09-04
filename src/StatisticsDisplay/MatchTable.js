@@ -1,31 +1,22 @@
 import React, { Component } from 'react'
 
 class MatchTable extends Component {
-    constructor() {
-        super();
-    }
-
-    componentDidMount() {
-        fetch('http://localhost:5000/api/games')
-            .then(response => response.json())
-            .then(data => this.setState({ games: data }));
-    }
-
+    
     render() {
         return (
             <div>
-                <h1 id='title'>Team Data</h1>
+                {/* <h1 id='title'>Team Name</h1> */}
                 <table id='games'>
                     {this.renderTableHeader()}  
                     <tbody>
-                        {this.props.team.games.map(game =>
+                        {this.props.games.map(game =>
                             <tr key={game.game_id}>
                                 <td>{game.game_id}</td>
                                 <td>{game.game_date}</td>
-                                <td>{game.teamOneId}</td>
-                                <td>{game.teamTwoId}</td>
+                                <td>{game.game_team_one}</td>
+                                <td>{game.game_team_two}</td>
                             </tr>
-                        )}
+                        )} 
                     </tbody>
                 </table>
             </div>
@@ -33,20 +24,23 @@ class MatchTable extends Component {
     }
 
     renderTableHeader() {
-        let header = Object.keys(this.props.team.games[0])
-        return header.map((key, index) => {
-            return <th key={index}>{key.toUpperCase()}</th>
-        })
-    //   return (  
-    //     <thead>
-    //       <tr>
-    //         <td>ID</td>
-    //         <td>Date</td>
-    //         <td>Team 1</td>
-    //         <td>Team 2</td>
-    //       </tr>
-    //     </thead>
-    //   )
+        const gamesExist = this.props.games[0];
+        if (gamesExist) {
+            return (  
+                <thead>
+                  <tr>
+                    <td>ID</td>
+                    <td>Date</td>
+                    <td>Team 1</td>
+                    <td>Team 2</td>
+                  </tr>
+                </thead>
+              )        
+            // let header = Object.keys(this.props.games[0])
+            // return header.map((key, index) => {
+            //     return <th key={index}>{key.toUpperCase()}</th>
+            // })
+        }        
     }
 }
 

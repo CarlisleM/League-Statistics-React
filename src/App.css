@@ -8,8 +8,8 @@
 }
 
 .app-leagues {
-  border: 1px solid red;
-  width: 150px;
+  width: 100px;
+  overflow: hidden;
 }
 
 .app-main {

@@ -12,8 +12,8 @@ export class TeamSelectDropdown extends React.Component {
     });
   }
 
-  changeTeams(team_logo, team_name) {
-    this.props.changeTeam(team_logo, team_name);
+  changeTeams(team_id, team_logo, team_name) {
+    this.props.changeTeam(team_id, team_logo, team_name);
   }
 
   render() {
@@ -29,7 +29,7 @@ export class TeamSelectDropdown extends React.Component {
               <Dropdown.Item
                 eventKey={team.team_id}
                 key={team.team_id}
-                onClick={() => this.changeTeams(team.team_logo, team.team_name)}
+                onClick={() => this.changeTeams(team.team_id, team.team_logo, team.team_name)}
               >
                 {team.team_name}
               </Dropdown.Item>
