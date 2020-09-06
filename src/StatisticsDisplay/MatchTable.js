@@ -12,6 +12,17 @@ class MatchTable extends Component {
                         {this.props.games.map(game =>
                             <tr key={game.game_id}>
                                 <td>{game.game_id}</td>
+
+                                {/* <td>{game.fblood}</td>
+                                <td>{game.ftower}</td>
+                                <td>{game.fdragon}</td>
+                                <td>{game.friftherald}</td>
+                                <td>{game.finhibitor}</td>
+                                <td>{game.fbaron}</td>
+                                <td>{game.team_one_kills}</td>
+                                <td>{game .team_two_kills}</td>
+                                <td>{game .winner}</td> */}
+
                                 <td>{game.game_date}</td>
                                 <td>{game.game_team_one}</td>
                                 <td>{game.game_team_two}</td>
